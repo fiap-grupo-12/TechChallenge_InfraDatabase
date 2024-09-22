@@ -12,13 +12,6 @@ terraform {
   required_version = ">= 1.1.0"
 }
 
-provider "aws" {
-  region     = "us-east-1"
-  access_key = "ASIA52YBFBLMSIN22EWX"
-  secret_key = "HP1KdoaNjmSm+Wkfc/CnOhtkwOMH4gdZcp5pjxwi"
-  token = "IQoJb3JpZ2luX2VjEHIaCXVzLXdlc3QtMiJIMEYCIQCz4c/9WDJWdilr7EPgaTP+ixgYu6C+XivVwGPEuJZ9OQIhAMr6CQYt7v7AwwZspwhaOjtbCikHxe0HLRom0FHUHrGSKr8CCKv//////////wEQABoMOTUwODAwODEyNzYxIgwnF6gz1BL6uyZRsOsqkwLTLKQeiDr6hlnfZQU7jzSqwPGjjF/CPGmZwOP6kt/0QvlRGxEZR6ulmVYefhaRBxcIT+FxLeTPjpZWrCQU8LmWVD5OBgUuPTaZjg4bSC+wyVVcezeli+ILD3ZWSDfUkaotuNlENgi28JtlidmUum9C23t/GgLoOszrOpJaaqn/pwJqzMdyJkOX3fF46cX7zkeR8DX5W9zpna0Lc2GcmA85mSojjSVp4gK4hzWZTVDoVU6NcUfiFeY0oL3VnOwiowrSq+LRSQUs3+0jm8zFdKx8Ulw0MuqGHYHMQaX3GkK1aKeg5BIJanYcGP8TEQTZS+nh+mq7xc/NBMqAscdYmW3XeyNMSrHQjyOAvbGXz6duu6pYozD3vMG3BjqcARqMH8BtBg/FDoURGeZjppROUAq6JdtaPFKObgyIHBOmMBGv4qUMBk3KtXGC81lmBNMLnkDLugqRkD8P1O+X5vJpIOGy2vn+e1Skt14GobjMdrDpgL6tz/4BPMeVGnaIv5XrBNOjHiK7ii/h2PloMNY1wu/AmNHMluufyLTX2BNu4nKS0U8p2Zoxxtx1d1qj64kxQRYH0fw1KXE0Jw=="
-}
-
 data "aws_subnet" "subnet_1" {
   id = "subnet-03fea9a91c4e2e18f"
 }
