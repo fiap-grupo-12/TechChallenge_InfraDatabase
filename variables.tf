@@ -1,11 +1,11 @@
 variable "db_username" {
   type      = string
   sensitive = true
-  default   = "username"
+  default   = "grupo12"
 }
 
 variable "db_password" {
   type      = string
   sensitive = true
-  default   = "password"
+  default   = "grupo12_password"
 }
