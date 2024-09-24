@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 terraform {
   required_providers {
     aws = {
@@ -10,7 +14,15 @@ terraform {
     }
   }
   required_version = ">= 1.1.0"
+  backend "s3" {
+    bucket = "terraform-tfstate-grupo12-fiap-2024"
+    key    = "sql/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
+
+
+
 
 resource "aws_security_group" "rds_security_group" {
   name        = "rds-security-group"
