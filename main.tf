@@ -46,7 +46,7 @@ resource "aws_security_group" "rds_security_group" {
 
 resource "aws_db_instance" "fiap-tech-challenge-rds" {
   engine = "sqlserver-ex"
-  engine_version = "15.00.4385.2.v1"
+  engine_version = "16.00.4085.2.v1"
   license_model = "license-included"
   allocated_storage = 20
   instance_class = "db.t3.micro"
@@ -72,10 +72,10 @@ resource "aws_secretsmanager_secret" "app_secret" {
 # Adicionando a versão do segredo com pares chave-valor
 resource "aws_secretsmanager_secret_version" "app_secret_value" {
   secret_id     = aws_secretsmanager_secret.app_secret.id
-  secret_string = aws_db_instance.fiap-tech-challenge-rds.endpoint
+  secret_string = "Initial Catalog=ByteMeBurguer; Data Source=${aws_db_instance.fiap-tech-challenge-rds.address},${aws_db_instance.fiap-tech-challenge-rds.port};TrustServerCertificate=True; Persist Security Info=True;User ID=${var.db_username};Password=${var.db_password}"
 }
 
 output "rds_endpoint" {
   description = "The endpoint of the RDS instance"
-  value = aws_db_instance.fiap-tech-challenge-rds.endpoint
+  value = "${aws_db_instance.fiap-tech-challenge-rds.address},${aws_db_instance.fiap-tech-challenge-rds.port}"
 }
