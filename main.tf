@@ -65,7 +65,7 @@ resource "aws_db_instance" "fiap-tech-challenge-rds" {
 
 # Criando o segredo no Secrets Manager
 resource "aws_secretsmanager_secret" "app_secret" {
-  name        = "sql_connection_string"  # Nome do segredo
+  name        = "sqlConnectionString"  # Nome do segredo
   description = "Segredo da aplicação com chave-valor"
 }
 
