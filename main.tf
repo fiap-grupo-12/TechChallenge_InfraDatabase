@@ -21,9 +21,6 @@ terraform {
   }
 }
 
-
-
-
 resource "aws_security_group" "rds_security_group" {
   name        = "rds-security-group"
   description = "Security group for RDS"
@@ -75,9 +72,8 @@ resource "aws_secretsmanager_secret" "app_secret" {
 # Adicionando a versão do segredo com pares chave-valor
 resource "aws_secretsmanager_secret_version" "app_secret_value" {
   secret_id     = aws_secretsmanager_secret.app_secret.id
-  secret_string = ""
+  secret_string = aws_db_instance.fiap-tech-challenge-rds.endpoint
 }
-
 
 output "rds_endpoint" {
   description = "The endpoint of the RDS instance"
