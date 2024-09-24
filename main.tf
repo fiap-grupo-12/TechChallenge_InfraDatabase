@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 terraform {
   required_providers {
     aws = {
@@ -10,7 +14,15 @@ terraform {
     }
   }
   required_version = ">= 1.1.0"
+  backend "s3" {
+    bucket = "terraform-tfstate-grupo12-fiap-2024"
+    key    = "sql/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
+
+
+
 
 resource "aws_security_group" "rds_security_group" {
   name        = "rds-security-group"
@@ -52,4 +64,22 @@ resource "aws_db_instance" "fiap-tech-challenge-rds" {
   tags = {
     Name = "fiap-techchallenge"
   }
+}
+
+# Criando o segredo no Secrets Manager
+resource "aws_secretsmanager_secret" "app_secret" {
+  name        = "sql_connection_string"  # Nome do segredo
+  description = "Segredo da aplicação com chave-valor"
+}
+
+# Adicionando a versão do segredo com pares chave-valor
+resource "aws_secretsmanager_secret_version" "app_secret_value" {
+  secret_id     = aws_secretsmanager_secret.app_secret.id
+  secret_string = ""
+}
+
+
+output "rds_endpoint" {
+  description = "The endpoint of the RDS instance"
+  value = aws_db_instance.fiap-tech-challenge-rds.endpoint
 }
